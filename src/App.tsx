@@ -5,7 +5,8 @@ import Robot from './components/Robot';
 import styles from './App.module.css';
 import ShoppingCart from './components/ShoppingCart';
 
-interface Props{};
+interface Props{
+};
 
 interface State{
   robotGllery: any[];

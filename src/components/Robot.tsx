@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Robot.module.css';
+import { appContext } from '../index';
+import { useContext } from 'react';
 
 interface RobotProps{
     id: number;
@@ -8,11 +10,13 @@ interface RobotProps{
 } 
 
 const Robot : React.FC<RobotProps> = ({id, name, email}) => {
+    const value = useContext(appContext);
     return (
         <div className={styles.cardContainer}>
             <img src={`https://robohash.org/${id}`} alt="" />
             <h2>{name}</h2>
             <p>{email}</p>
+            <p>作者：{value.username}</p>
         </div>
     );
 };
