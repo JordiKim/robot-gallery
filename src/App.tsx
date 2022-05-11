@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import logo from './assets/images/logo.svg';
 import robots from './mockdata/robot.json';
 import Robot from './components/Robot';
+import RobotDiscount from './components/RobotDiscount';
 import styles from './App.module.css';
 import ShoppingCart from './components/ShoppingCart';
-
 interface Props{
 };
 
@@ -59,8 +59,12 @@ const App : React.FC = (props) => {
       { !loading ?
         (
           <div className={styles.robotList}>
-            {robotGallery.map((r) => (
-              <Robot id={r.id} email={r.email} name={r.name} />
+            {robotGallery.map((r, index) => (
+              index % 2 === 0 ? (
+                <RobotDiscount id={r.id} email={r.email} name={r.name} />
+              ):(
+                <Robot id={r.id} email={r.email} name={r.name} />
+              )
             ))}
           </div>
         ) : 
