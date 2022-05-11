@@ -26,3 +26,21 @@ export const withAddToCart = (ChildrenComponent: React.ComponentType<RobotProps>
         return <ChildrenComponent {...props} addToCart={addToCart}/>
     }
 }
+
+// hook返回的不是一個組件，而是業務邏輯本身
+export const useAddToCart = () => {
+    const setState = useContext(appSetStateContext);
+    const addToCart = (id, name) => {
+        if(setState){
+            setState(state => {
+                return {
+                    ...state,
+                    shoppingCart:{
+                        items: [...state.shoppingCart.items, {id, name}]
+                    }
+                }
+            })
+        }
+    }
+    return addToCart;
+}
